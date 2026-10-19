@@ -1,6 +1,6 @@
 ---
 name: retro
-description: "對一次 coding session 進行回顧（retrospective）。"
+description: "回顧一次寫程式的工作階段，把出過的錯變成自動檢查或寫作規範，讓下一次從更好的工作環境開始。"
 disable-model-invocation: true
 ---
 

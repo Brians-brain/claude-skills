@@ -1,6 +1,6 @@
 ---
 name: grill-with-docs
-description: 嚴格拷問以磨利一個計畫或設計，同時沿途寫下文件（ADR 與術語表 GLOSSARY.md）。適合在 repo 裡開始一個新功能前使用。
+description: "用連續追問的方式拷問一個計畫或設計，同時沿途寫下文件（架構決策紀錄 ADR 與術語表 GLOSSARY.md）。適合在儲存庫裡開始做一個新功能之前使用。"
 disable-model-invocation: true
 ---
 

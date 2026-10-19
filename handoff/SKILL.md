@@ -1,7 +1,7 @@
 ---
 name: handoff
-description: 把目前對話壓縮成一份交接文件，讓另一個 agent 或新的 session 能接手。
-argument-hint: "下一個 session 要用來做什麼？"
+description: "把目前的對話壓縮成一份交接文件，讓另一個代理或新的工作階段能接手。"
+argument-hint: "下一個工作階段要用來做什麼？"
 disable-model-invocation: true
 ---
 

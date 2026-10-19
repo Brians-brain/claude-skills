@@ -1,6 +1,6 @@
 ---
 name: implement
-description: "依據一份 spec 或一組 ticket 實作一項工作。"
+description: "依照一份規格書或一組工作單，實作一項工作。"
 disable-model-invocation: true
 ---
 
@@ -14,6 +14,6 @@ disable-model-invocation: true
 
 定期執行型別檢查（若專案有設定 `mypy` 或 `pyright`）、定期執行單一測試檔，並在最後執行一次完整的測試套件。
 
-完成後，用 Skill tool 呼叫 "code-review" 審查這次的工作。
+完成後，用 Skill tool 呼叫 "code-review-zh" 審查這次的工作。
 
 把工作 commit 到目前的分支。

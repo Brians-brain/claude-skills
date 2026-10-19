@@ -1,6 +1,6 @@
 ---
 name: to-spec
-description: "把目前的對話整理成一份 spec 並發布到專案的 issue tracker：不訪談，只綜合已經討論過的內容。"
+description: "把目前的對話整理成一份規格書，發布到專案的需求追蹤系統：不再訪談，只彙整已經討論過的內容。"
 disable-model-invocation: true
 ---
 

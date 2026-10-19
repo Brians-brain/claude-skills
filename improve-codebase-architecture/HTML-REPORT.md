@@ -1,23 +1,23 @@
-# HTML Report Format
+# HTML 報告格式
 
-The architectural review is rendered as a single self-contained HTML file in the OS temp directory. Tailwind and Mermaid both come from CDNs. Mermaid handles graph-shaped diagrams reliably; hand-built divs and inline SVG handle the more editorial visuals (mass diagrams, cross-sections). Mix the two: don't lean on Mermaid for everything, it'll start to look generic.
+架構審查的結果是一個自給自足的 HTML 檔，放在作業系統的暫存目錄。Tailwind 和 Mermaid 都從 CDN 載入。Mermaid 能可靠地畫出圖形狀的關係；手工的 div 和內嵌 SVG 負責比較有編輯感的視覺（質量圖、剖面圖）。兩者混著用：不要什麼都靠 Mermaid，不然看起來會很制式。
 
-## Scaffold
+## 骨架
 
 ```html
 <!doctype html>
 <html lang="zh-Hant">
   <head>
     <meta charset="utf-8" />
-    <title>Architecture review for {{repo name}}</title>
+    <title>{{repo name}} 架構審查</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="module">
       import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
       mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
     </script>
     <style>
-      /* small custom layer for things Tailwind doesn't cover cleanly:
-         dashed seam lines, hand-drawn-feeling arrow heads, etc. */
+      /* Tailwind 不好處理的少數東西：
+         虛線的 seam、像手畫的箭頭等 */
       .seam { stroke-dasharray: 4 4; }
       .leak { stroke: #dc2626; }
       .deep { background: linear-gradient(135deg, #0f172a, #1e293b); }
@@ -33,34 +33,34 @@ The architectural review is rendered as a single self-contained HTML file in the
 </html>
 ```
 
-## Header
+## 頁首
 
-Repo name, date, and a compact legend: solid box = module, dashed line = seam, red arrow = leakage, thick dark box = deep module. No introduction paragraph. Straight into the candidates.
+儲存庫名稱、日期，以及精簡的圖例：實線方框＝模組、虛線＝seam、紅色箭頭＝洩漏、粗框深色方塊＝深模組。不要寫開場白，直接進入候選。
 
-## Candidate card
+## 候選卡片
 
-The diagrams carry the weight. Prose is sparse, plain, and uses the glossary terms (from the `/codebase-design` skill) without ceremony.
+重點在圖。文字少而白話，直接使用 `/codebase-design` 術語表裡的詞，不必客套。
 
-Each candidate is one `<article>`:
+每個候選是一個 `<article>`：
 
-- **Title**: short, names the deepening (e.g. "Collapse the Order intake pipeline").
-- **Badge row**: recommendation strength (`Strong` = emerald, `Worth exploring` = amber, `Speculative` = slate), plus a tag for the dependency category (`in-process`, `local-substitutable`, `ports & adapters`, `mock`).
-- **Files**: monospaced list, `font-mono text-sm`.
-- **Before / After diagram**: the centrepiece. Two columns, side by side. See patterns below.
-- **Problem**: one sentence. What hurts.
-- **Solution**: one sentence. What changes.
-- **Wins**: bullets, ≤6 words each. e.g. "Tests hit one interface", "Pricing logic stops leaking", "Delete 4 shallow wrappers".
-- **ADR callout** (if applicable): one line in an amber-tinted box.
+- **標題**：簡短，說出要加深的是什麼（例如「把訂單收件流程收合成一個模組」）。
+- **徽章列**：建議強度（`強烈建議`＝翠綠、`值得探索`＝琥珀、`推測性`＝石板灰），加上一個依賴類別的標籤（`同程序內`、`可在本機替換`、`連接埠與轉接器`、`mock`）。
+- **檔案**：等寬字型的清單，`font-mono text-sm`。
+- **之前／之後圖**：主角。左右兩欄並排，樣式見下方。
+- **問題**：一句話，哪裡痛。
+- **解法**：一句話，改了什麼。
+- **好處**：條列，每條不超過 12 個字。例如「測試只碰一個介面」「定價邏輯不再外洩」「刪掉 4 個淺包裝層」。
+- **ADR 提示**（有的話）：琥珀底色框裡的一行字。
 
-No paragraphs of explanation. If the diagram needs a paragraph to be understood, redraw the diagram.
+不要寫解釋性的段落。如果一張圖要配一段話才看得懂，就重畫那張圖。
 
-## Diagram patterns
+## 圖的樣式
 
-Pick the pattern that fits the candidate. Mix them. Don't make every diagram look the same. Variety is part of the point.
+挑最適合這個候選的樣式，混著用，不要每張圖都長得一樣。變化本身就是重點之一。
 
-### Mermaid graph (the workhorse for dependencies / call flow)
+### Mermaid 圖（畫依賴與呼叫流程的主力）
 
-Use a Mermaid `flowchart` or `graph` when the point is "X calls Y calls Z, and look at the mess." Wrap it in a Tailwind-styled card so it doesn't feel parachuted in. Style with classDef to colour leakage edges red and the deep module dark. Sequence diagrams work well for "before: 6 round-trips; after: 1."
+當重點是「X 呼叫 Y 再呼叫 Z，看看有多亂」時，用 Mermaid 的 `flowchart` 或 `graph`。外面包一張 Tailwind 樣式的卡片，才不會像硬塞進來的。用 classDef 把洩漏的邊塗成紅色、把深模組塗成深色。序列圖很適合表達「之前：來回 6 次；之後：1 次」。
 
 ```html
 <div class="rounded-lg border border-slate-200 bg-white p-4">
@@ -75,49 +75,49 @@ Use a Mermaid `flowchart` or `graph` when the point is "X calls Y calls Z, and l
 </div>
 ```
 
-### Hand-built boxes-and-arrows (when Mermaid's layout fights you)
+### 手工方框與箭頭（Mermaid 的排版不聽話時）
 
-Modules as `<div>`s with borders and labels. Arrows as inline SVG `<line>` or `<path>` elements positioned absolutely over a relative container. Reach for this when you want the "after" diagram to feel like one thick-bordered deep module with greyed-out internals, since Mermaid won't render that with the right weight.
+模組用有邊框和標籤的 `<div>`。箭頭用內嵌 SVG 的 `<line>` 或 `<path>`，絕對定位在一個相對定位的容器上。想讓「之後」的圖看起來像一個粗框的深模組、內部細節淡化時用這個，因為 Mermaid 畫不出那種份量感。
 
-### Cross-section (good for layered shallowness)
+### 剖面圖（適合呈現層層都很淺）
 
-Stack horizontal bands (`h-12 border-l-4`) to show layers a call passes through. Before: 6 thin layers each doing nothing. After: 1 thick band labelled with the consolidated responsibility.
+把水平色帶（`h-12 border-l-4`）疊起來，表示一次呼叫穿過的各層。之前：6 層薄薄的、每層什麼都沒做。之後：1 條厚帶，標上合併後的職責。
 
-### Mass diagram (good for "interface as wide as implementation")
+### 質量圖（適合呈現「介面和實作一樣寬」）
 
-Two rectangles per module: one for interface surface area, one for implementation. Before: interface rectangle is nearly as tall as the implementation rectangle (shallow). After: interface rectangle is short, implementation rectangle is tall (deep).
+每個模組畫兩個長方形：一個代表介面的表面積，一個代表實作。之前：介面長方形幾乎和實作一樣高（淺）。之後：介面長方形很矮、實作長方形很高（深）。
 
-### Call-graph collapse
+### 呼叫圖收合
 
-Before: a tree of function calls rendered as nested boxes. After: the same tree collapsed into one box, with the now-internal calls shown faded inside it.
+之前：一棵函式呼叫樹，畫成層層巢狀的方框。之後：同一棵樹收合成一個方框，原本的呼叫變成內部的，淡淡地畫在裡面。
 
-## Style guidance
+## 風格
 
-- Lean editorial, not corporate-dashboard. Generous whitespace. Serif optional for headings (`font-serif` works well with stone/slate).
-- Colour sparingly: one accent (emerald or indigo) plus red for leakage and amber for warnings.
-- Keep diagrams ~320px tall so before/after sits comfortably side by side without scrolling.
-- Use `text-xs uppercase tracking-wider` for module labels inside diagrams, so they read as schematic, not as UI.
-- The only scripts are the Tailwind CDN and the Mermaid ESM import. The report is otherwise static: no app code, no interactivity beyond Mermaid's own rendering.
+- 走編輯排版的感覺，不要像企業儀表板。留白要多。標題可以用襯線字型（`font-serif` 和 stone／slate 色系很搭）。
+- 顏色要節制：一個強調色（翠綠或靛藍），加上紅色表示洩漏、琥珀色表示警告。
+- 圖高約 320px，讓之前／之後並排時不用捲動。
+- 圖裡的模組標籤用 `text-xs uppercase tracking-wider`，讀起來像示意圖，而不是介面元素。
+- 唯二的腳本是 Tailwind CDN 和 Mermaid 的 ESM 匯入。除此之外報告是靜態的：沒有應用程式碼，除了 Mermaid 本身的渲染外沒有互動。
 
-## Top recommendation section
+## 首要建議段落
 
-One larger card. Candidate name, one sentence on why, anchor link to its card. That's it.
+一張比較大的卡片：候選名稱、一句話說明為什麼、一個連到該候選卡片的錨點連結。就這樣。
 
-## Tone
+## 語氣
 
-Plain English, concise, but the architectural nouns and verbs come straight from the `/codebase-design` skill. Concision is not an excuse to drift.
+用白話的繁體中文，簡潔；架構的名詞和動詞一律取自 `/codebase-design`。簡潔不是用詞飄移的藉口。
 
-**Use exactly:** module, interface, implementation, depth, deep, shallow, seam, adapter, leverage, locality.
+**一律使用：** 模組、介面、實作、深度、深、淺、seam、轉接器、槓桿、局部性。
 
-**Never substitute:** component, service, unit (for module) · API, signature (for interface) · boundary (for seam) · layer, wrapper (for module, when you mean module).
+**不要替換成：** 元件、服務、單元（指模組時）· API、簽章（指介面時）· 邊界（指 seam 時）· 層、包裝（其實是在說模組時）。
 
-**Phrasings that fit the style:**
+**符合這個風格的說法：**
 
-- "Order intake module is shallow: interface nearly matches the implementation."
-- "Pricing leaks across the seam."
-- "Deepen: one interface, one place to test."
-- "Two adapters justify the seam: HTTP in prod, in-memory in tests."
+- 「訂單收件模組很淺：介面幾乎和實作一樣。」
+- 「定價邏輯越過 seam 外洩。」
+- 「加深：一個介面，一個地方測試。」
+- 「兩個轉接器讓這個 seam 站得住：正式環境用 HTTP，測試用記憶體內版本。」
 
-**Wins bullets** name the gain in glossary terms: *"locality: bugs concentrate in one module"*, *"leverage: one interface, N call sites"*, *"interface shrinks; implementation absorbs the wrappers"*. Don't write *"easier to maintain"* or *"cleaner code"*, because those terms aren't in the glossary and don't earn their place.
+**好處條列**要用術語表的詞說出得到什麼：「局部性：bug 集中在一個模組」「槓桿：一個介面，N 個呼叫處」「介面變小，實作吸收掉那些包裝」。不要寫「比較好維護」或「程式碼更乾淨」，這些詞不在術語表裡，沒有資格出現。
 
-No hedging, no throat-clearing, no "it's worth noting that…". If a sentence could be a bullet, make it a bullet. If a bullet could be cut, cut it. If a term isn't in the `/codebase-design` glossary, reach for one that is before inventing a new one.
+不要含糊其辭、不要清喉嚨式的開場、不要「值得注意的是……」。能寫成條列的句子就寫成條列；能刪的條列就刪。術語不在 `/codebase-design` 術語表裡時，先找一個表裡有的詞，不要自己發明新詞。

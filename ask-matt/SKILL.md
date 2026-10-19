@@ -1,6 +1,6 @@
 ---
 name: ask-matt
-description: 問「我現在這個狀況該用哪個 skill 或流程？」。這個 repo 中所有 skill 的路由器。
+description: "問「我現在這個狀況該用哪個 skill 或流程？」：這個 skill 集合的總導覽，依你描述的狀況指出該用哪一個。"
 disable-model-invocation: true
 ---
 
@@ -29,11 +29,11 @@ disable-model-invocation: true
      - 用 **`/implement-spec`** 一次跑完整份 spec。它把 ticket 當成**任務圖**讀取，在已就緒的**前沿**上平行執行實作子 agent，並把所有東西落在同一條**整合分支**上。當你寧可統籌整個建置、而不是自己逐張推進時使用。
    - **否** → 就在這裡、同一個情境視窗中用 **`/implement`**。
 
-   無論哪種，程式碼都是透過 **`/tdd`**（一次一個 red-green 切片）建出來的，最後以 **`/code-review`** 收尾，也就是對 diff 做雙軸審查（Standards＋Spec）。`/implement` 對每張 ticket 都跑這兩個；`/implement-spec` 的每個實作者都會用 `/tdd`，最後對整合分支跑一次 `/code-review`。當你只想以測試先行做出一個具體行為、不需要完整 spec 時，單獨使用 **`/tdd`**；任何時候想針對某個固定點審查一個分支或 PR，就單獨使用 **`/code-review`**。
+   無論哪種，程式碼都是透過 **`/tdd`**（一次一個 red-green 切片）建出來的，最後以 **`/code-review-zh`** 收尾，也就是對 diff 做雙軸審查（Standards＋Spec）。`/implement` 對每張 ticket 都跑這兩個；`/implement-spec` 的每個實作者都會用 `/tdd`，最後對整合分支跑一次 `/code-review-zh`。當你只想以測試先行做出一個具體行為、不需要完整 spec 時，單獨使用 **`/tdd`**；任何時候想針對某個固定點審查一個分支或 PR，就單獨使用 **`/code-review-zh`**。
 
    當工作要以 pull request 送出時，**`/pr`** 決定 PR 內文的形狀：呈現變更的最小視覺、證明它有效的前後對照證據，以及單向門／雙向門的判斷。它是模型呼叫型的，所以 agent 每次寫 PR 都會用到它。
 
-4. **`/retro`** 讓迴圈閉合。在一次建置之後，尤其是出了狀況的那種，它會回顧整個 session，並建議改善 agent 的**工作環境**，而不是程式碼：導航指標、自動檢查、`/code-review` 執行的寫作規範、引導檔、工具。機械性的錯誤變成確定性的檢查；判斷題變成寫作規範。下一次建置就從更好的環境開始。
+4. **`/retro`** 讓迴圈閉合。在一次建置之後，尤其是出了狀況的那種，它會回顧整個 session，並建議改善 agent 的**工作環境**，而不是程式碼：導航指標、自動檢查、`/code-review-zh` 執行的寫作規範、引導檔、工具。機械性的錯誤變成確定性的檢查；判斷題變成寫作規範。下一次建置就從更好的環境開始。
 
 ### 情境衛生
 

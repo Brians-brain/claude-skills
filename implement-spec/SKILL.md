@@ -1,6 +1,6 @@
 ---
 name: implement-spec
-description: "把 /to-spec 與 /to-tickets 的成果實作成程式碼（平行子 agent 版）。"
+description: "把 /to-spec 寫好的規格書與 /to-tickets 切好的工作單實作成程式碼，由多個子代理平行進行。"
 disable-model-invocation: true
 ---
 
@@ -35,7 +35,7 @@ Issue tracker 應該已經提供給你了。如果沒有，告訴使用者先執
 
 6. 如果這改變了可接手 ticket 的**前沿**，就再啟動更多**實作子 agent** 處理新的 ticket。這樣可以達到最大的平行度。
 
-7. 所有 ticket 都完成後，對整合分支用 Skill tool 呼叫 `code-review`。用單一個**實作子 agent** 修正審查提出的所有問題。
+7. 所有 ticket 都完成後，對整合分支用 Skill tool 呼叫 `code-review-zh`。用單一個**實作子 agent** 修正審查提出的所有問題。
 
 8. 如果有 draft PR，把它標記為可以審查。否則，依照 issue tracker 結案的方式解決每張 ticket，並回報整合分支。
 

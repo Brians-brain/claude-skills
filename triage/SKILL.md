@@ -1,6 +1,6 @@
 ---
 name: triage
-description: 讓 issue 與外部 PR 在 triage 角色的狀態機中流轉：分類、驗證、必要時拷問，並撰寫可交給 agent 的簡報。
+description: "把需求單（issue）與外部合併請求依分類流程往下推進：分類、驗證、必要時追問，並寫出能直接交給代理執行的任務簡報。"
 disable-model-invocation: true
 ---
 

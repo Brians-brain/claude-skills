@@ -1,6 +1,6 @@
 ---
 name: wayfinder
-description: 把一大塊工作（多到一個 agent session 裝不下）規劃成 issue tracker 上一張共享的「決策 ticket 地圖」，一次解決一張，直到通往目的地的路變清楚。
+description: "把一大塊工作（多到一個代理工作階段做不完）規劃成需求追蹤系統上一張共用的「決策工作單地圖」，一次解決一張，直到通往目標的路變清楚。"
 disable-model-invocation: true
 ---
 

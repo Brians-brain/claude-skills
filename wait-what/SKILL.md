@@ -1,6 +1,6 @@
 ---
 name: wait-what
-description: 停一下，上一則回覆我沒看懂：請重新講一次。
+description: "停一下，上一則回覆我沒看懂：請換個方式重新講一次。"
 disable-model-invocation: true
 ---
 

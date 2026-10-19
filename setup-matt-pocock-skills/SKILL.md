@@ -1,6 +1,6 @@
 ---
 name: setup-matt-pocock-skills
-description: "為這個 repo 設定工程類 skill 所需的環境：issue tracker、triage 標籤用語、領域文件的配置。在第一次使用其他工程類 skill 之前執行一次。"
+description: "為這個儲存庫設定工程類 skill 需要的環境：需求追蹤系統（issue tracker）、分類標籤的用語、領域文件的位置。第一次使用其他工程類 skill 之前執行一次。"
 disable-model-invocation: true
 ---
 

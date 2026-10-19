@@ -1,6 +1,6 @@
 ---
 name: to-tickets
-description: 把一份計畫、spec 或目前的對話拆成一組 tracer-bullet ticket，每張都標明阻擋它的 ticket，並發布到設定好的 tracker（本地是一張 ticket 一個檔案、以文字記錄阻擋關係；真正的 tracker 則用原生的阻擋連結）。
+description: "把一份計畫、規格書或目前的對話，拆成一組能從頭到尾打通的小型工作單（曳光彈式切片），每張都標明被哪幾張擋住，再發布到設定好的追蹤系統（本機模式是一張工作單一個檔案，用文字記錄阻擋關係；正式的追蹤系統則用它原生的阻擋連結）。"
 disable-model-invocation: true
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: pr
-description: "撰寫 PR 內文時使用。"
+description: "撰寫合併請求（PR）的說明內文時使用。"
 metadata:
   credits:
     skill: show-me

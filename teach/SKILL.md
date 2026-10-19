@@ -1,6 +1,6 @@
 ---
 name: teach
-description: 在這個工作目錄中，教使用者一項新技能或概念（跨多個 session 的長期學習）。
+description: "在這個工作目錄中，教使用者一項新技能或概念，可以跨多個工作階段長期學習。"
 disable-model-invocation: true
 argument-hint: "你想學什麼？"
 ---

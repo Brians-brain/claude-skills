@@ -1,6 +1,6 @@
 ---
 name: domain-modeling
-description: 建立並磨利專案的領域模型（domain model）。在討論專案術語、撰寫或修改 GLOSSARY.md、記錄或修改 ADR 時使用。
+description: "建立並磨利專案的領域模型，讓專案用語一致。在討論專案術語、撰寫或修改術語表 GLOSSARY.md、記錄或修改架構決策紀錄（ADR）時使用。"
 ---
 
 # 領域建模（Domain Modeling）

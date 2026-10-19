@@ -1,6 +1,6 @@
 ---
 name: improve-codebase-architecture
-description: 掃描程式碼找出可以「加深」的機會，以視覺化的 HTML 報告呈現，再針對你選的那一項進行拷問。
+description: "掃描程式碼，找出可以把淺模組「加深」的重構機會，用視覺化的 HTML 報告呈現，再針對你選的那一項深入追問。"
 disable-model-invocation: true
 ---
 
@@ -57,7 +57,7 @@ disable-model-invocation: true
 
 **ADR 衝突**：如果某個候選和既有的 ADR 矛盾，只有當摩擦真實到值得重新檢討那份 ADR 時才提出來。在卡片中清楚標示（例如一個警告框：「_與 ADR-0007 矛盾，但值得重新討論，因為……_」）。不要列出 ADR 禁止的每一個理論上的重構。
 
-完整的 HTML 骨架、圖形樣式與排版指引，見 [HTML-REPORT.md](HTML-REPORT.md)（英文參考文件；報告輸出仍以繁體中文撰寫）。
+完整的 HTML 骨架、圖形樣式與排版指引，見 [HTML-REPORT.md](HTML-REPORT.md)。
 
 **還不要**提出介面。檔案寫好之後，問使用者：「你想探索其中哪一個？」
 

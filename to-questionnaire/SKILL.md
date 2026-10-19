@@ -1,6 +1,6 @@
 ---
 name: to-questionnaire
-description: 把一個自己無法完全回答的決策，轉成一份給別人填寫的問卷（例如問客戶規格、問供應商替代料、問採購成本條件）。
+description: "把一個自己無法完全回答的決策，轉成一份給別人填寫的問卷（例如問客戶規格、問供應商替代料、問採購成本條件）。"
 disable-model-invocation: true
 ---
 

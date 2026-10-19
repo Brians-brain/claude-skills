@@ -8,7 +8,7 @@
 
 這套 skill 不是一堆各自獨立的工具，而是一條流水線。它要解決的是 coding agent 的四個常見失敗：agent 做的不是你要的（雙方沒對齊）、agent 講話太囉嗦（沒有共同語言）、寫出來的程式不能用（缺回饋迴路）、程式碼越來越亂（沒有在設計上投入）。
 
-**主流程**是「想法 → 上線」。先用 `grill-with-docs` 把想法拷問清楚，同時把術語寫進 `GLOSSARY.md`、把重要決策寫成 ADR；遇到紙上解決不了的問題，就用 `prototype` 做拋棄式原型回答它。如果工作大到需要多個 session，用 `to-spec` 把討論整理成 spec，再用 `to-tickets` 切成垂直切片的 ticket，然後逐張 `implement`，或用 `implement-spec` 平行跑完。實作時一律透過 `tdd` 一次做一個 red → green 切片，完成後由 `code-review` 從「是否符合規範」與「是否符合 spec」兩個軸審查；送 PR 時由 `pr` 決定內文格式。最後用 `retro` 回顧整個 session，把犯過的錯變成自動檢查或寫作規範，讓下一次從更好的環境開始。
+**主流程**是「想法 → 上線」。先用 `grill-with-docs` 把想法拷問清楚，同時把術語寫進 `GLOSSARY.md`、把重要決策寫成 ADR；遇到紙上解決不了的問題，就用 `prototype` 做拋棄式原型回答它。如果工作大到需要多個 session，用 `to-spec` 把討論整理成 spec，再用 `to-tickets` 切成垂直切片的 ticket，然後逐張 `implement`，或用 `implement-spec` 平行跑完。實作時一律透過 `tdd` 一次做一個 red → green 切片，完成後由 `code-review-zh` 從「是否符合規範」與「是否符合 spec」兩個軸審查；送 PR 時由 `pr` 決定內文格式。最後用 `retro` 回顧整個 session，把犯過的錯變成自動檢查或寫作規範，讓下一次從更好的環境開始。
 
 **匝道**是會產生工作、再匯入主流程的情境：別人回報的 bug 或需求用 `triage` 整理成可以交給 agent 的 issue；難纏的 bug 用 `diagnosing-bugs` 先建立會變紅的回饋迴路再除錯；大到一個 session 裝不下、還看不清方向的專案，用 `wayfinder` 在 issue tracker 上畫一張決策地圖，一次解決一個決策。
 
@@ -34,10 +34,10 @@
 | prototype | 自動或 `/prototype` | 拋棄式原型：驗證邏輯／狀態模型，或比較 UI 變體 |
 | to-spec | `/to-spec` | 把討論整理成 spec，發布到 issue tracker |
 | to-tickets | `/to-tickets` | 把 spec 切成帶阻擋關係的垂直切片 ticket |
-| implement | `/implement` | 依 ticket 實作（內含 tdd 與 code-review） |
+| implement | `/implement` | 依 ticket 實作（內含 tdd 與 code-review-zh） |
 | implement-spec | `/implement-spec` | 平行子 agent 一次實作整份 spec |
 | tdd | 自動或 `/tdd` | 測試驅動開發（pytest） |
-| code-review | 自動或 `/code-review` | 雙軸審查：Standards＋Spec |
+| code-review-zh | 自動或 `/code-review-zh` | 雙軸審查：Standards＋Spec |
 | pr | 自動 | 撰寫 PR 內文：示意圖、前後證據、合併風險 |
 | retro | `/retro` | 回顧 session，改善 agent 的工作環境 |
 

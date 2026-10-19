@@ -1,6 +1,6 @@
 ---
 name: writing-for-agents
-description: 撰寫給 agent 讀的文件。在建立或修改 skill、或修改 AGENTS.md、CLAUDE.md 時使用。
+description: "撰寫給 AI 代理讀的文件。在建立或修改 skill，或修改 AGENTS.md、CLAUDE.md 時使用。"
 ---
 
 與使用者溝通使用繁體中文。撰寫的文件本身用什麼語言，依照該文件既有的語言或使用者指定。
